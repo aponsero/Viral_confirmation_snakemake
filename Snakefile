@@ -5,6 +5,7 @@ rule all:
         expand("results/Prodigal/{sample}_prot.faa", sample=config["samples"]),
         expand("results/HMMER/{sample}_pvog.log", sample=config["samples"]),
         expand("results/HMMER/{sample}_VPF.log", sample=config["samples"]),
+        expand("results/HMMER/{sample}_Prok.log", sample=config["samples"]),
         expand("results/BLAST_PhiX/{sample}_phix.txt", sample=config["samples"]),
 
 ##### workflow starts here
@@ -24,7 +25,22 @@ rule Prodigal:
         source activate viral_confirm
         prodigal -i {input.f} -o {params.gff} -f gff -a {output} -d {params.genes} -p meta
         """
-
+        
+rule KoFam:
+    input:
+        f="results/Prodigal/{base}_prot.faa",
+    params:
+        outdir= "results/Prodigal",
+        HmmDB="databases/KEGG_profiles_prokaryotes.HMM",
+    output:
+        "results/HMMER/{base}_Prok.log",
+    shell:
+        """
+        set +eu
+        source activate viral_confirm
+        hmmscan --cpu 10 --tblout {output} {params.HmmDB} {input.f}
+        """
+        
 rule pVOG:
     input:
         f="results/Prodigal/{base}_prot.faa",

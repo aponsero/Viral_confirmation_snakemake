@@ -30,7 +30,7 @@ rule pVOG:
         f="results/Prodigal/{base}_prot.faa",
     params:
         outdir= "results/Prodigal",
-        HmmDB="/xdisk/bhurwitz/mig2020/rsgrps/bhurwitz/alise/my_data/databases/HMMER/vog_db_30_01_20",
+        HmmDB="databases/vog_db_30_01_20",
     output:
         "results/HMMER/{base}_pvog.log",
     shell:
@@ -45,7 +45,7 @@ rule pVF:
         f="results/Prodigal/{base}_prot.faa",
     params:
         outdir= "results/Prodigal",
-        HmmDB="/xdisk/bhurwitz/mig2020/rsgrps/bhurwitz/alise/my_data/databases/HMMER/VPF_list",
+        HmmDB="databases/VPF_list",
     output:
         "results/HMMER/{base}_VPF.log",
     shell:

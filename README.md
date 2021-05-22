@@ -13,14 +13,17 @@ conda env create -f environment.yml
 ```
 
 ### Download the HMM profiles
+Download the KoFAM KEGG HMM collection from [here](https://www.genome.jp/tools/kofamkoala/)
 
 ### download profiles from PVF
+Download the VPF HMM collection from [JGI IMG](https://img.jgi.doe.gov/cgi-bin/vr/main.cgi)
 
 ### download profiles from pVOGs
-
+Download the pVOG HMM collection from [here](http://dmk-brain.ecn.uiowa.edu/pVOGs/)
 
 ## Run
-The pipeline need as an imput the selection of potential viral contigs as a fasta and a coverage file
+Add in the config.yml the samples names to process.
+The pipeline takes as an imput the selection of potential viral contigs as a fasta and a coverage file
 
 
 
